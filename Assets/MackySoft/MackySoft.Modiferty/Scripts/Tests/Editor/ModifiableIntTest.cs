@@ -71,6 +71,44 @@ namespace Tests
             Assert.DoesNotThrow(() => i.Evaluate());
         }
 
+        [Test]
+        public void StructAdd(
+            [Random(-99999, 99999, 10)] int a,
+            [Random(-99999, 99999, 10)] int b)
+        {
+            ModifiableStruct<int> i = new ModifiableStruct<int>(a);
+            i.Add(b);
+            Assert.AreEqual(a + b, i.Evaluate());
+        }
 
+        [Test]
+        public void StructSub(
+            [Random(-99999, 99999, 10)] int a,
+            [Random(-99999, 99999, 10)] int b)
+        {
+            ModifiableStruct<int> i = new ModifiableStruct<int>(a);
+            i.Subtract(b);
+            Assert.AreEqual(a - b, i.Evaluate());
+        }
+
+        [Test]
+        public void StructMul(
+            [Random(-99999, 99999, 10)] int a,
+            [Random(-99, 99, 5)] int b)
+        {
+            ModifiableStruct<int> i = new ModifiableStruct<int>(a);
+            i.Multiply(b);
+            Assert.AreEqual(a * b, i.Evaluate());
+        }
+
+        [Test]
+        public void StructDiv(
+            [Random(-99999, 99999, 10)] int a,
+            [Values(-24, -99, -1, 1, 2, 3, 10, 99)] int b)
+        {
+            ModifiableStruct<int> i = new ModifiableStruct<int>(a);
+            i.Divide(b);
+            Assert.AreEqual(a / b, i.Evaluate());
+        }
     }
 }
