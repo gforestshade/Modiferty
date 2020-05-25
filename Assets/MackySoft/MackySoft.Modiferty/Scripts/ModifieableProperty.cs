@@ -3,7 +3,15 @@ using UnityEngine;
 
 namespace MackySoft.Modiferty {
 
-	public interface IReadOnlyModifiableProperty<T> {
+	public interface IEvaluatable<T> {
+
+		/// <summary>
+		/// Evaluate the base value by modifiers.
+		/// </summary>
+		T Evaluate ();
+	}
+
+	public interface IReadOnlyModifiableProperty<T> : IEvaluatable<T> {
 
 		/// <summary>
 		/// Base value before the evaluation.
@@ -20,11 +28,6 @@ namespace MackySoft.Modiferty {
 		/// <para> This is used to avoid creating unnecessary ModifierList. </para>
 		/// </summary>
 		bool HasModifiers { get; }
-
-		/// <summary>
-		/// Evaluate the base value by modifiers.
-		/// </summary>
-		T Evaluate ();
 
 	}
 

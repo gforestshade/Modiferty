@@ -5,14 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace MackySoft.Modiferty {
 
-	public interface IReadOnlyModifierList<T> : IReadOnlyList<IModifier<T>> {
-
-		/// <summary>
-		/// Evaluate the value.
-		/// </summary>
-		/// <param name="value"> Value to be modified. </param>
-		T Evaluate (T value);
-		
+	public interface IReadOnlyModifierList<T> : IReadOnlyList<IModifier<T>>, IEvaluatable<T,T> {
 	}
 
 	public interface IModifierList<T> : IList<IModifier<T>>, IReadOnlyModifierList<T> {

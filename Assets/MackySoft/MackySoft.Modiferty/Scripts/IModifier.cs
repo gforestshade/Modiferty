@@ -1,5 +1,14 @@
 ﻿namespace MackySoft.Modiferty {
 
+	public interface IEvaluatable<Ret, Arg> {
+		/// <summary>
+		/// Evaluate the value.
+		/// </summary>
+		/// <param name="value"> Value to be modified. </param>
+		Ret Evaluate(Arg value);
+
+	}
+
 	public interface IModifier {
 		/// <summary>
 		/// <para> Priority of evaluation. </para>
@@ -8,13 +17,7 @@
 		int Priority { get; }
 	}
 
-	public interface IModifier<T> : IModifier {
-		/// <summary>
-		/// Evaluate the value.
-		/// </summary>
-		/// <param name="value"> Value to be modified. </param>
-		T Evaluate (T value);
-
+	public interface IModifier<T> : IModifier, IEvaluatable<T,T> {
 	}
 
 }
